@@ -1,0 +1,19 @@
+import pandas as pd
+
+# Φόρτωσε το CSV (βάλε το path στο αρχείο σου)
+df = pd.read_csv("data.csv")
+
+# Εμφάνισε τις πρώτες γραμμές για έλεγχο
+print("Πρώτες γραμμές:")
+print(df.head())
+
+# Βρες duplicates βάσει 2+ στηλών (π.χ. 'name' και 'email')
+duplicates = df[df.duplicated(subset=['name', 'email'], keep=False)]
+
+# Εμφάνισε τα duplicates
+print("\nΒρέθηκαν duplicates:")
+print(duplicates)
+
+# Αποθήκευσέ τα σε νέο αρχείο
+duplicates.to_csv("duplicates.csv", index=False)
+print("\nΤα duplicates αποθηκεύτηκαν στο duplicates.csv") 
